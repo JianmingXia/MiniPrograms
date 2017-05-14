@@ -1,0 +1,32 @@
+.todo-list {
+  display: block;
+  padding: 20rpx;
+  width: 100vw;
+  margin: 0 auto;
+}
+.todo-item {
+  display: flex;
+  flex-direction: row;
+  flex-basis: 1;
+  justify-content: space-around;
+  align-items: stretch;
+  width: 80 vw;
+  padding: 10rpx;
+  border-bottom: 1rpx solid #ededed;
+}
+.icon {
+  vertical-align: middle;
+}
+.remove {
+  float: right;
+  align-self: flex-end;
+}
+.desc {
+  vertical-align: middle;
+  flex-grow: 1;
+  margin-left: 10rpx;
+}
+
+.add_desc {
+  height:2rem;
+}

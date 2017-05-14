@@ -1,0 +1,46 @@
+.section {  
+  display: flex;  
+  flex-direction: column;  
+}  
+/*设置垂直滚动每个滑动块高度*/  
+.scroll-view-item {  
+  height: 100px;  
+}  
+/*设置中间两个按钮的位置*/  
+.btn-area {  
+  height: 80px;  
+  justify-content: space-around;  
+  display: flex;  
+  flex-direction: column;  
+}  
+/*设置水平滚动视图，该属性必须设置为nowrap，表示超出范围也不换行 
+white-white-space属性的值 
+    normal: 自动换行(默认.内容超过父控件宽度换行) 
+    pre: 保持HTML源代码的空格与换行,等同与pre标签，识别空格和换行符 
+    nowrap: 不换行,超出范围的隐藏 
+    pre-wrap: 同pre属性,但是遇到超出容器范围的时候会自动换行 
+    pre-line: 同pre属性,但是遇到连续空格会被看作一个空格 
+    inherit: 继承 
+*/  
+.scroll-view_H {  
+  white-space: nowrap;  
+}  
+/*设置水平滚动的所有元素的大小,view默认为块元素，会自动换行，所以必须设置为行内元素*/  
+.scroll-view-item_H {  
+  width: 150px;  
+  height: 100px;  
+  display: inline-block;   
+}  
+/*设置每个View的背景颜色*/  
+.bc_green {  
+  background-color: green;  
+}  
+.bc_red {  
+  background-color: red;  
+}  
+.bc_blue {  
+  background-color: blue;  
+}  
+.bc_yellow {  
+  background-color: yellow;  
+}  

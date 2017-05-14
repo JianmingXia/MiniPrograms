@@ -1,0 +1,23 @@
+<!--index.wxml-->
+<view class="container">
+  <view  bindtap="viewTodoList" class="userinfo">
+    <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    <!--<text class="userinfo-province">{{userInfo.province}}</text>
+    <text class="userinfo-city">{{userInfo.city}}</text>-->
+  </view>
+  <view class="usermotto">
+    <!--<text class="user-motto">{{"hello " + userInfo.nickName}}</text>-->
+  </view>
+  <!--<view wx:if="{{b > a}}"> 
+      <text class="user-number">{{a + b}}</text>
+  </view>
+
+  <block wx:for="{{[1, 2, 3]}}">
+  <view> {{index}}: </view>
+  <view> {{item}} </view>
+  </block>-->
+  <view class="classname">
+  <button bindtap="viewTodoList">My TodoList</button>
+  </view>
+</view>

@@ -1,0 +1,17 @@
+<view class="section">
+  <input class="add_desc" placeholder="Todo描述"  name="desc" bindinput="inputTodoDesc" focus/>
+</view>
+
+<button bindtap="addTodo" type="primary" size="{{buttons.primarySize}}" loading="{{loading}}" plain="{{plain}}"
+      disabled="{{disabled}}"> 添加 </button>
+
+<view class="container todo-list">
+  <block wx:for="{{todos}}" wx:for-item="todo" wx:key="todo.id">
+    <view class="todo-item">
+      <icon bindtap="toggleTodo" data-todo="{{todo}}" class="icon" type="success" wx:if="{{todo.is_complete}}"></icon>
+      <icon bindtap="toggleTodo" data-todo="{{todo}}" class="icon" type="success_circle" wx:if="{{!todo.is_complete}}"></icon>
+      <text bindtap="toggleTodo" data-todo="{{todo}}" class="desc">{{todo.desc}}</text>
+      <icon bindtap="removeTodo" data-todo="{{todo}}" class="remove" type="clear"></icon>
+    </view>
+  </block>
+</view>

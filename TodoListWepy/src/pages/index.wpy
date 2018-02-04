@@ -1,0 +1,70 @@
+<style lang="less">
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+</style>
+<template>
+  <view class="container">
+    <view class="userinfo">
+      <image class="userinfo-avatar" src="{{ userInfo.avatarUrl }}" background-size="cover"/>
+      <view class="userinfo-nickname"> {{ userInfo.nickName }}</view>
+    </view>
+
+    <panel>
+      <view class="title" slot="title">任务列表</view>
+      <list></list>
+    </panel>
+  </view>
+</template>
+
+<script>
+import wepy from 'wepy';
+import Panel from '../components/panel';
+import List from '../components/list';
+
+export default class Index extends wepy.page {
+    //页面配置
+    config = {
+        "navigationBarTitleText": "今天你要做什么？"
+    };
+
+    // //声明页面中将要使用到的组件
+    components = {
+        panel: Panel,
+        list: List
+    };
+
+    // //可用于页面模板中绑定的数据
+    data = {
+      userInfo: {
+
+      }
+    }
+
+    methods = {
+    }
+
+    onLoad() {
+      let self = this
+      this.$parent.getUserInfo(function (userInfo) {
+        if (userInfo) {
+          self.userInfo = userInfo
+        }
+
+        self.$apply()
+      })
+    }
+}
+</script>

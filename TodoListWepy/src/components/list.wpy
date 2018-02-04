@@ -1,0 +1,77 @@
+<style lang="less">
+.mylist:odd {
+  color: red;
+}
+.mylist:even {
+  color: green;
+}
+</style>
+<template>
+  <view class="list">
+    <view>
+      <input @input="taskNameInput" class="new_task" placeholder="添加新任务" value="{{ taskName }}" />    
+      <button @tap="add" >添加</button>
+    </view>
+    <block wx:for-items="{{list}}" wx:for-index="index" wx:for-item="item" wx:key="id">
+      <view @tap="tap" class="mylist">
+        <text> {{item.name}} </text> 
+      </view>
+    </block>
+    <toast />
+  </view>
+</template>
+<script>
+import wepy from "wepy";
+import Toast from "wepy-com-toast";
+
+export default class List extends wepy.component {
+  data = {
+    list: [],
+    taskName: ""
+  };
+
+  components = {
+    toast: Toast
+  };
+
+  events = {
+    "index-broadcast": (...args) => {
+      let $event = args[args.length - 1];
+      console.log(
+        `${this.$name} receive ${$event.name} from ${$event.source.name}`
+      );
+    }
+  };
+
+  methods = {
+    tap() {
+      // this.num = this.num + 1
+      console.log(this.$name + " tap");
+    },
+    add() {
+      if (this.taskName.length === 0) {
+        this.emptyTaskNameToast();
+        return;
+      }
+      let len = this.list.length;
+      this.list.push({ id: len + 1, name: this.taskName });
+      this.taskName = "";
+    },
+    taskNameInput(e) {
+      this.taskName = e.detail.value;
+    }
+  };
+
+  emptyTaskNameToast() {
+    let promise = this.$invoke("toast", "show", {
+      title: "请填写任务名称"
+    });
+
+    promise.then(d => {
+      console.log("toast done");
+    });
+  }
+
+  onLoad() {}
+}
+</script>
